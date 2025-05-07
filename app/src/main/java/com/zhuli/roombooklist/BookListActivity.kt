@@ -1,6 +1,7 @@
 package com.zhuli.roombooklist
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -32,21 +33,25 @@ class BookListActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         
-        // Observe LiveData
+        binding.fab.visibility = View.GONE
+        
+        binding.progressBar.visibility = View.VISIBLE
+        
+        bookViewModel.refreshFromNetwork()
+        
+        bookViewModel.isNetworkAvailable.observe(this) { isAvailable ->
+            if (!isAvailable) {
+                Toast.makeText(this, "Network unavailable, showing local data", Toast.LENGTH_SHORT).show()
+            }
+        }
+        
+        bookViewModel.isLoading.observe(this) { isLoading ->
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+        
         bookViewModel.allBooks.observe(this) { books ->
             // Update RecyclerView
             adapter.submitList(books)
-        }
-        
-        // Setup FAB click event
-        binding.fab.setOnClickListener {
-            // Add sample book
-            val newBook = Book(
-                title = "New Book ${System.currentTimeMillis()}",
-                author = "Unknown Author",
-                year = 2023
-            )
-            bookViewModel.insert(newBook)
         }
     }
 }
