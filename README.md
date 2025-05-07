@@ -1,5 +1,10 @@
 # Screenshot
 
+## Network avaliable
+![Network avaliable](https://github.com/ladmini/RoomBookList/blob/main/screenshot/network_ok.png)
+
+## Network Not avaliable
+![Network Not avaliable](https://github.com/ladmini/RoomBookList/blob/main/screenshot/network_ng.png)
 
 # Data Loading Flow
 
