@@ -29,28 +29,4 @@ class BookRepository(
             }
         )
     }
-    
-    // Insert book
-    @WorkerThread
-    suspend fun insert(book: Book) {
-        bookDao.insertBook(book)
-    }
-    
-    // Update book
-    @WorkerThread
-    suspend fun update(book: Book) {
-        bookDao.updateBook(book)
-    }
-    
-    // Delete book
-    @WorkerThread
-    suspend fun delete(book: Book) {
-        bookDao.deleteBook(book)
-    }
-    
-    // Get book by ID
-    @WorkerThread
-    suspend fun getBookById(id: Long): Book? {
-        return bookDao.getBookById(id)
-    }
 }

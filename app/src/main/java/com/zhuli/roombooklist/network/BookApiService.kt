@@ -8,7 +8,4 @@ import retrofit2.http.Path
 interface BookApiService {
     @GET(Endpoints.BOOKS)
     suspend fun getBooks(): List<Book>
-    
-    @GET(Endpoints.BOOK_DETAIL)
-    suspend fun getBookById(@Path("id") id: Long): Book
 }

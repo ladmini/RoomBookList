@@ -29,20 +29,6 @@ class BookViewModel(private val repository: BookRepository) : ViewModel() {
         _isLoading.value = false
     }
     
-    // Insert book
-    fun insert(book: Book) = viewModelScope.launch {
-        repository.insert(book)
-    }
-    
-    // Update book
-    fun update(book: Book) = viewModelScope.launch {
-        repository.update(book)
-    }
-    
-    // Delete book
-    fun delete(book: Book) = viewModelScope.launch {
-        repository.delete(book)
-    }
     
     // ViewModel factory
     class BookViewModelFactory(

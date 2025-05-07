@@ -8,9 +8,4 @@ class BookNetworkRepository(private val apiService: BookApiService) {
     suspend fun getBooks(): Result<List<Book>> {
         return safeApiCall { apiService.getBooks() }
     }
-    
-    // Get book by specific ID using safe API call wrapper
-    suspend fun getBookById(id: Long): Result<Book> {
-        return safeApiCall { apiService.getBookById(id) }
-    }
 }
