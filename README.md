@@ -1,24 +1,22 @@
 # Screenshot
 
-## Network avaliable
+## API request success
 ![Network avaliable](https://github.com/ladmini/RoomBookList/blob/main/screenshot/network_ok.png)
 
-## Network Not avaliable
+## API request failure
 ![Network Not avaliable](https://github.com/ladmini/RoomBookList/blob/main/screenshot/network_ng.png)
 
 # Data Loading Flow
 
 ```mermaid
 graph TD
-    A[Launch Application] --> B{Check Network Connection}
-    B -->|Network Available| C[Call API for Data]
-    B -->|No Network| F[Load Local Database Cache]
+    A[Launch Application] --> C[Call API for Data]
     
     C -->|Request Success| D[Clear Local Database]
     D --> E[Save API Data to Database]
     E --> G[Load and Display Data from Database]
     
-    C -->|Request Failure| F
+    C -->|Request Failure| F[Load Local Database Cache]
     F --> G
 ```
 
