@@ -32,16 +32,13 @@ class BookListActivity : AppCompatActivity() {
         
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        
-        binding.fab.visibility = View.GONE
-        
         binding.progressBar.visibility = View.VISIBLE
         
         bookViewModel.refreshFromNetwork()
         
         bookViewModel.isNetworkAvailable.observe(this) { isAvailable ->
             if (!isAvailable) {
-                Toast.makeText(this, "Network unavailable, showing local data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Network unavailable, showing local data", Toast.LENGTH_LONG).show()
             }
         }
         
